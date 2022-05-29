@@ -1,4 +1,5 @@
 import random
+from copy import deepcopy
 from threading import Lock
 
 
@@ -16,10 +17,11 @@ class SingletonMeta(type):
 
 class GameOfLife(metaclass=SingletonMeta):
     def __init__(self, width=20, height=20):
-        self.counter = 0
         self.__width = width
         self.__height = height
         self.world = self.generate_universe()
+        self.old_world = self.world
+        self.counter = 0
 
     def form_new_generation(self):
         universe = self.world
@@ -39,6 +41,7 @@ class GameOfLife(metaclass=SingletonMeta):
                     new_world[i][j] = 1
                     continue
                 new_world[i][j] = 0
+        self.old_world = deepcopy(self.world)
         self.world = new_world
 
     def generate_universe(self):
