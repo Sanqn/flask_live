@@ -3,7 +3,7 @@
 {% block app_content%}
 <a class="btn btn-warning home" href="{{ url_for('index') }}">Home</a>
 <a class="btn btn-info refresh" href="{{ url_for('live') }}">Refresh</a>
-
+<div class="counter">{{game.counter}}</div>
 
   <table class="world">
         {% for i in range(game.world|length) %}
@@ -20,7 +20,6 @@
             </tr>
         {% endfor %}
     </table>
-<div class="counter">{{game.counter}}</div>
 {% endblock %}
 
 
