@@ -21,6 +21,7 @@ class GameOfLife(metaclass=SingletonMeta):
         self.__height = height
         self.world = self.generate_universe()
         self.old_world = self.world
+        #counter
         self.counter = 0
 
     def form_new_generation(self):
